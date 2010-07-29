@@ -18,6 +18,6 @@ end
 # IMPORTANT! This is a very bad thing to do for a production
 # application with sensitive information
 
-get '/env' do
-  ENV.inspect
-end
+#get '/env' do
+#  ENV.inspect
+#end
