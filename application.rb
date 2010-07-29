@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'sinatra'
 
 configure :production do
@@ -10,6 +11,10 @@ end
 
 get '/' do
   erb :index
+end
+
+get '/about' do
+  "I'm running on Version " + Sinatra::VERSION
 end
 
 # Test at <appname>.heroku.com
