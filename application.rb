@@ -9,12 +9,13 @@ configure :production do
   #       from ENV['DATABASE_URI'] (see /env route below)
 end
 
-get '/' do
-  erb :index
+before do
+  headers "Content-Type" => 'text/html; charset=utf-8'
 end
 
-get '/about' do
-  "I'm running on Version " + Sinatra::VERSION
+get '/' do
+  @title = 'isWebApp.com'
+  erb :index
 end
 
 # Test at <appname>.heroku.com
