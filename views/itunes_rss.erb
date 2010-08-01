@@ -1,0 +1,250 @@
+<div id="generator">
+	<h3>iTunes Store RSS Feed Generator&nbsp;&nbsp;&nbsp;<div id="progress"></div></h3>
+	<form name="rssGenerator" method="get">
+	<fieldset>
+		<div id="field_country" class="rssgen_field">
+			<label>Country</label>
+			<select id="feedCountry" name="selectedStoreFront">
+				<option value="AR">Argentina</option>
+				<option value="AU">Australia</option>
+				<option value="AT">Austria</option>
+				<option value="BE">Belgium</option>
+				<option value="BR">Brazil</option>
+				<option value="CA">Canada</option>
+				<option value="CL">Chile</option>
+				<option value="CN">China</option>
+				<option value="CO">Colombia</option>
+				<option value="CR">Costa Rica</option>
+				<option value="HR">Croatia</option>
+				<option value="CZ">Czech Republic</option>
+				<option value="DK">Denmark</option>
+				<option value="SV">El Salvador</option>
+				<option value="FI">Finland</option>
+				<option value="FR">France</option>
+				<option value="DE">Germany</option>
+				<option value="GR">Greece</option>
+				<option value="GT">Guatemala</option>
+				<option value="HK">Hong Kong</option>
+				<option value="HU">Hungary</option>
+				<option value="IN">India</option>
+				<option value="ID">Indonesia</option>
+				<option value="IE">Ireland</option>
+				<option value="IL">Israel</option>
+				<option value="IT">Italy</option>
+				<option value="JP">Japan</option>
+				<option value="KR">Korea, Republic Of</option>
+				<option value="KW">Kuwait</option>
+				<option value="LB">Lebanon</option>
+				<option value="LU">Luxembourg</option>
+				<option value="MY">Malaysia</option>
+				<option value="MX">Mexico</option>
+				<option value="NL">Netherlands</option>
+				<option value="NZ">New Zealand</option>
+				<option value="NO">Norway</option>
+				<option value="PK">Pakistan</option>
+				<option value="PA">Panama</option>
+				<option value="PE">Peru</option>
+				<option value="PH">Philippines</option>
+				<option value="PL">Poland</option>
+				<option value="PT">Portugal</option>
+				<option value="QA">Qatar</option>
+				<option value="RO">Romania</option>
+				<option value="RU">Russia</option>
+				<option value="SA">Saudi Arabia</option>
+				<option value="SG">Singapore</option>
+				<option value="SK">Slovakia</option>
+				<option value="SI">Slovenia</option>
+				<option value="ZA">South Africa</option>
+				<option value="ES">Spain</option>
+				<option value="LK">Sri Lanka</option>
+				<option value="SE">Sweden</option>
+				<option value="CH">Switzerland</option>
+				<option value="TW">Taiwan</option>
+				<option value="TH">Thailand</option>
+				<option value="TR">Turkey</option>
+				<option value="GB">UK</option>
+				<option value="US" selected="selected">USA</option>
+				<option value="AE">United Arab Emirates</option>
+				<option value="VE">Venezuela</option>
+				<option value="VN">Vietnam</option>
+			</select>
+		</div>
+		<div id="field_mediatype" class="rssgen_field">
+			<label>Media Type</label>
+			<select id="feedMediaType" disabled></select>
+		</div>
+		<div id="field_feedtype" class="rssgen_field">
+			<label>Feed Type</label>
+			<select id="feedType" disabled></select>
+		</div>
+		<div id="field_size" class="rssgen_field">
+			<label>Size</label>
+			<select id="feedSize" style="width:60px" disabled>
+				<option value="10" selected>10</option>
+				<option value="25">25</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="300">300</option>
+			</select>
+		</div>
+		<div id="field_genre" class="rssgen_field">
+			<label>Genre</label>
+			<select id="feedGenre" disabled></select>
+		</div>
+		<div id="field_explicit" class="rssgen_field" style="display:none;margin:0;">
+			<label>Explicit Content</label>
+			<input type="radio" value="true" name="feedEC" id="feedECYes "/> <label for="feedECYes">Yes</label>
+			&nbsp;&nbsp;&nbsp;
+			<input type="radio" value="false" name="feedEC" id="feedECNo "/> <label for="feedECNo">No</label>
+		</div>
+		<div id="generate_rss">
+			<input style="vertical-align:bottom" id="generate_btn" type="button" value="Generate"></input>
+		</div>
+	</fieldset>
+	</form>
+	<div class="clear">&nbsp;</div>
+	<div id="urlOutput" style="display:none">
+		<label>RSS Feed URL</label><br/>
+		<textarea id="urlField"></textarea>
+		<div id="preview_rss"><input type="button" id="preview_btn" value="Preview"></input></div>
+		<div class="clear">&nbsp;</div>
+	</div>
+	
+	<div class="clear">&nbsp;</div>
+	<div id="urlOutputIframe" style="display:none">
+		<iframe id="urlFieldIframe" src="" width="100%" height="100%"></iframe>
+		<div class="clear">&nbsp;</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+<!--
+<div id="rss">
+	<h1>iTunes Store RSS Feed Generator:</h1>
+	<form id="rssGenerateForm" name="rssGenerator" method="get">
+		<fieldset>
+			<div id="field_country" class="rssgen_field">
+				<select id="feedCountry" name="selectedStoreFront">
+					<option value="AR">Argentina</option>
+					<option value="AU">Australia</option>
+					<option value="AT">Austria</option>
+					<option value="BE">Belgium</option>
+					<option value="BR">Brazil</option>
+					<option value="CA">Canada</option>
+					<option value="CL">Chile</option>
+					<option value="CN">China</option>
+					<option value="CO">Colombia</option>
+					<option value="CR">Costa Rica</option>
+					<option value="HR">Croatia</option>
+					<option value="CZ">Czech Republic</option>
+					<option value="DK">Denmark</option>
+					<option value="SV">El Salvador</option>
+					<option value="FI">Finland</option>
+					<option value="FR">France</option>
+					<option value="DE">Germany</option>
+					<option value="GR">Greece</option>
+					<option value="GT">Guatemala</option>
+					<option value="HK">Hong Kong</option>
+					<option value="HU">Hungary</option>
+					<option value="IN">India</option>
+					<option value="ID">Indonesia</option>
+					<option value="IE">Ireland</option>
+					<option value="IL">Israel</option>
+					<option value="IT">Italy</option>
+					<option value="JP">Japan</option>
+					<option value="KR">Korea, Republic Of</option>
+					<option value="KW">Kuwait</option>
+					<option value="LB">Lebanon</option>
+					<option value="LU">Luxembourg</option>
+					<option value="MY">Malaysia</option>
+					<option value="MX">Mexico</option>
+					<option value="NL">Netherlands</option>
+					<option value="NZ">New Zealand</option>
+					<option value="NO">Norway</option>
+					<option value="PK">Pakistan</option>
+					<option value="PA">Panama</option>
+					<option value="PE">Peru</option>
+					<option value="PH">Philippines</option>
+					<option value="PL">Poland</option>
+					<option value="PT">Portugal</option>
+					<option value="QA">Qatar</option>
+					<option value="RO">Romania</option>
+					<option value="RU">Russia</option>
+					<option value="SA">Saudi Arabia</option>
+					<option value="SG">Singapore</option>
+					<option value="SK">Slovakia</option>
+					<option value="SI">Slovenia</option>
+					<option value="ZA">South Africa</option>
+					<option value="ES">Spain</option>
+					<option value="LK">Sri Lanka</option>
+					<option value="SE">Sweden</option>
+					<option value="CH">Switzerland</option>
+					<option value="TW">Taiwan</option>
+					<option value="TH">Thailand</option>
+					<option value="TR">Turkey</option>
+					<option value="GB">UK</option>
+					<option value="US">USA</option>
+					<option value="AE">United Arab Emirates</option>
+					<option value="VE">Venezuela</option>
+					<option value="VN">Vietnam</option>
+				</select>
+			</div>
+			<div id="field_mediatype" class="rssgen_field">
+				<select id="feedMediaType"><option value="Music" selected="">Music</option><option value="Podcasts">Podcasts</option><option value="Audiobooks">Audiobooks</option><option value="TV Shows">TV Shows</option><option value="Music Videos">Music Videos</option><option value="Movies">Movies</option><option value="Mobile Software Applications">Apps</option></select>
+			</div>
+			<div id="field_feedtype" class="rssgen_field">
+				<select id="feedType"><option value="topalbums" selected="">Top Albums</option><option value="topimixes">Top iMixes</option><option value="topsongs">Top Songs</option><option value="newreleases">New Releases</option><option value="justadded">Just Added</option><option value="featuredalbums">Featured Albums &amp; Exclusives</option></select>
+			</div>
+			<div id="field_size" class="rssgen_field">
+				<select id="feedSize" style="width:60px">
+					<option value="10" selected="">10</option>
+					<option value="25">25</option>
+					<option value="50">50</option>
+					<option value="100">100</option>
+					<option value="300">300</option>
+				</select>
+			</div>
+			<div id="field_genre" class="rssgen_field">
+				<select id="feedGenre"><option value="" selected="">All Genres</option><option value="20">Alternative</option><option value="2">Blues</option><option value="4">Children's Music</option><option value="22">Christian &amp; Gospel</option><option value="5">Classical</option><option value="3">Comedy</option><option value="6">Country</option><option value="17">Dance</option><option value="7">Electronic</option><option value="50">Fitness &amp; Workout</option><option value="18">Hip Hop/Rap</option><option value="11">Jazz</option><option value="12">Latino</option><option value="14">Pop</option><option value="15">R&amp;B/Soul</option><option value="24">Reggae</option><option value="21">Rock</option><option value="10">Singer/Songwriter</option><option value="16">Soundtrack</option><option value="50000061">Spoken Word</option><option value="19">World</option></select>
+			</div>
+			<div id="field_explicit" class="rssgen_field">
+				<label>Explicit</label>
+				<input type="radio" value="true" name="feedEC" id="feedECYes" checked="checked"> <label for="feedECYes">Yes</label>
+				<input type="radio" value="false" name="feedEC" id="feedECNo"> <label for="feedECNo">No</label>
+			</div>
+			<div id="generate_rss">
+				<input id="generate_btn" type="button" value="Generate">
+			</div>
+			<div id="preview_rss">
+				<input id="preview_btn" type="button" value="Preview">
+			</div>
+			<a href="javascript:%20(function(){var%20a=document.createElement('div'),d=document.getElementsByTagName('body')[0];otherlib=false;msg='';a.style.position='fixed';a.style.height='32px';a.style.width='220px';a.style.marginLeft='-110px';a.style.top='0';a.style.left='50%';a.style.padding='5px%2010px%205px%2010px';a.style.zIndex=1001;a.style.fontSize='12px';a.style.color='#222';a.style.backgroundColor='#f99';if(typeof%20jQuery!='undefined'){msg='This%20page%20already%20using%20jQuery%20v'+jQuery.fn.jquery;return%20e()}else%20if(typeof%20$=='function')otherlib=true;function%20g(c,h){var%20b=document.createElement('script');b.src=c;c=document.getElementsByTagName('head')[0];var%20f=false;b.onload=b.onreadystatechange=function(){if(!f&&(!this.readyState||this.readyState=='loaded'||this.readyState=='complete')){f=true;h()}};c.appendChild(b)}g('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',function(){if(typeof%20jQuery=='undefined')msg='Sorry,%20but%20jQuery%20wasn\'t%20able%20to%20load';else{msg='This%20page%20is%20now%20jQuerified%20with%20v'+jQuery.fn.jquery;if(otherlib)msg+='%20and%20noConflict().%20Use%20$jq(),%20not%20$().'}return%20e()});function%20e(){a.innerHTML=msg;d.appendChild(a);window.setTimeout(function(){if(typeof%20jQuery=='undefined')d.removeChild(a);else{jQuery(a).fadeOut('slow',function(){jQuery(this).remove()});if(otherlib)$jq=jQuery.noConflict()}},2500)}})();">test</a>
+		</fieldset>
+	</form>
+	<div id="rssGeneratedResult" style="display:none;">
+		<form id="rssResultForm" name="rssResult" method="get">
+			<fieldset>
+				<div id="field_result" class="rssgen_field">
+					<input name="result" type="text" value="http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topaudiobooks/sf=143460/limit=25/genre=50000045/explicit=true/xml" />
+				</div>
+				<div id="generate_more_rss">
+					<input id="generate_more_btn" type="button" value="Generate More...">
+				</div>
+				<div id="shorten_url_rss">
+					<input id="shorten_url_btn" type="button" value="Shorten URL">
+				</div>
+				<div id="preview_this_rss">
+					<input id="preview_this_btn" type="button" value="Preview">
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+-->

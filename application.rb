@@ -15,7 +15,14 @@ end
 
 get '/' do
   @title = 'isWebApp.com'
+  @page_name = 'index'
   erb :index
+end
+
+get '/itunes/rss' do
+  @title = 'iTunes Store RSS Feed Generator | isWebApp.com'
+  @page_name = 'itunes_rss'
+  erb :itunes_rss
 end
 
 # Test at <appname>.heroku.com

@@ -1,0 +1,12 @@
+#rss { height: 30px; line-height: 30px; }
+#rss h1 { font-size: 12px; margin:1px 0px 0px 11px; padding: 0px; float: left; }
+#rss form { height: 30px; margin: 0px 0px 0px 4px; padding: 0px; float: left; }
+#rss form fieldset { height: 30px; margin: 0px; padding: 0px; border: 0px; }
+#rss form fieldset .rssgen_field { float: left; }
+#rss form fieldset .rssgen_field select { font-size: 11px; margin: 0px 4px 0px 0px; }
+#rss form fieldset #field_result input { width: 721px; }
+#rss form fieldset #generate_rss { float: left; margin: 0px 0px 0px 5px; }
+#rss form fieldset #preview_rss { float: left; margin: 0px 0px 0px 5px; }
+#rss form fieldset #generate_more_rss { float: left; margin: 0px 0px 0px 5px; }
+#rss form fieldset #shorten_url_rss { float: left; margin: 0px 0px 0px 5px; }
+#rss form fieldset #preview_this_rss { float: left; margin: 0px 0px 0px 5px; }

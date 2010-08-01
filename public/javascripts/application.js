@@ -1,1 +1,1 @@
-console.log('foo');
+console.log('called: application.js');
