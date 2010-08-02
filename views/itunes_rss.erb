@@ -71,16 +71,16 @@
 		</div>
 		<div id="field_mediatype" class="rssgen_field">
 			<label>Media Type</label>
-			<select id="feedMediaType" disabled></select>
+			<select id="feedMediaType" disabled="disabled"></select>
 		</div>
 		<div id="field_feedtype" class="rssgen_field">
 			<label>Feed Type</label>
-			<select id="feedType" disabled></select>
+			<select id="feedType" disabled="disabled"></select>
 		</div>
 		<div id="field_size" class="rssgen_field">
 			<label>Size</label>
-			<select id="feedSize" style="width:60px" disabled>
-				<option value="10" selected>10</option>
+			<select id="feedSize" style="width:60px" disabled="disabled">
+				<option value="10" selected="selected">10</option>
 				<option value="25">25</option>
 				<option value="50">50</option>
 				<option value="100">100</option>
@@ -89,13 +89,14 @@
 		</div>
 		<div id="field_genre" class="rssgen_field">
 			<label>Genre</label>
-			<select id="feedGenre" disabled></select>
+			<select id="feedGenre" disabled="disabled"></select>
 		</div>
 		<div id="field_explicit" class="rssgen_field" style="display:none;margin:0;">
 			<label>Explicit Content</label>
-			<input type="radio" value="true" name="feedEC" id="feedECYes "/> <label for="feedECYes">Yes</label>
-			&nbsp;&nbsp;&nbsp;
-			<input type="radio" value="false" name="feedEC" id="feedECNo "/> <label for="feedECNo">No</label>
+			<select id="feedEC">
+				<option value="true" selected="selected">Explicit</option>
+				<option value="false">Censored</option>
+			</select>
 		</div>
 		<div id="generate_rss">
 			<input style="vertical-align:bottom" id="generate_btn" type="button" value="Generate"></input>
@@ -105,7 +106,7 @@
 	<div class="clear">&nbsp;</div>
 	<div id="urlOutput" style="display:none">
 		<label>RSS Feed URL</label><br/>
-		<textarea id="urlField"></textarea>
+		<input id="urlField" value="" />
 		<div id="preview_rss"><input type="button" id="preview_btn" value="Preview"></input></div>
 		<div class="clear">&nbsp;</div>
 	</div>
