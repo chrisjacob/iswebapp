@@ -7,7 +7,8 @@
 
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css">
 <link rel="stylesheet" href="/stylesheets/application.css" type="text/css" />
-<link rel="stylesheet" href="/stylesheets/itunes_rss.css" type="text/css" />
+<link rel="stylesheet" href="/stylesheets/<%= @page_name %>.css" type="text/css" />
+
 
 <script type="text/javascript">
 	// anything that needs to happen early on (e.g. document.write)
@@ -19,30 +20,26 @@
 	
 </style>
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-17705048-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+<%= partial(:'partials/layout/google_analytics') %>
 </head>
 <body class="<%= @page_name %>">
 	<%= yield %>
 
-	<!-- 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
-	-->
-	<!-- <script src="/javascripts/jquery-1.4.2.js" type="text/javascript"></script> -->
-	<script src="http://ax.itunes.apple.com/javascript/prototype.js" type="text/javascript"></script>
+	<!-- <script src="/javascripts/jquery-1.4.2.js" type="text/javascript"></script> --> 
 	<script src="/javascripts/application.js" type="text/javascript"></script>
-	<script src="/javascripts/itunes_rss_wsAvailableFeeds.js" type="text/javascript"></script>
-	<script src="/javascripts/itunes_rss.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			isWebApp.init( { page_name: "<%= @page_name %>" } );
+		});
+	</script>
+	
+	<% if @page_name === "itunes_rss" %>
+		<script src="http://ax.itunes.apple.com/javascript/prototype.js" type="text/javascript"></script>
+		<script src="/javascripts/itunes_rss_wsAvailableFeeds.js" type="text/javascript"></script>
+	<% end %>
+	
+	<script src="/javascripts/<%= @page_name %>.js" type="text/javascript"></script>
+	
 </body>
 </html>

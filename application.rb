@@ -1,5 +1,8 @@
 require 'rubygems'
 require 'sinatra'
+require 'partials'
+
+helpers Sinatra::Partials
 
 configure :production do
   # Configure stuff here you'll want to
