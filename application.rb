@@ -17,15 +17,29 @@ before do
 end
 
 get '/' do
-  @title = 'isWebApp.com'
+  @page_title = 'isWebApp.com'
   @page_name = 'index'
+	@page_css = css_partial_symbol(@page_name)
+	@page_js = js_partial_symbol(@page_name)
   erb :index
 end
 
 get '/itunes/rss' do
-  @title = 'iTunes Store RSS Feed Generator | isWebApp.com'
+  @page_title = 'iTunes Store RSS Feed Generator | isWebApp.com'
   @page_name = 'itunes_rss'
+	@page_css = css_partial_symbol(@page_name)
+	@page_js = js_partial_symbol(@page_name)
   erb :itunes_rss
+end
+
+def css_partial_symbol( page_name )
+  css_partial_path = 'partials/' + page_name + '/stylesheets'
+  css_partial_path.to_sym
+end
+
+def js_partial_symbol( page_name )
+  js_partial_path = 'partials/' + page_name + '/javascripts'
+  js_partial_path.to_sym
 end
 
 # Test at <appname>.heroku.com
