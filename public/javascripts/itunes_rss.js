@@ -87,6 +87,8 @@ var document = window.document,
 		
 		createOption( '#feedMediaType', 'Loading...' );
 
+		// load local copy of the data which (for Australia) would normally would be from:
+		// http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/RSS/wsAvailableFeeds?cc=AU
 		$.getScript( '/javascripts/wsAvailableFeeds/' + isWebAppItunesRss.countryCode + '.js', function(){
 			if(typeof availableFeeds !== 'undefined')
 			{
