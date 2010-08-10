@@ -22,8 +22,8 @@ var document = window.document,
 		} else {
 			this.countryCode = "US";
 		}
-    $('#feedCountry').val(this.countryCode);
-    
+		    $('#feedCountry').val(this.countryCode);
+		    
 		getData(this.countryCode);
 		
 		$('#feedCountry').bind( 'change', function(){
@@ -87,9 +87,7 @@ var document = window.document,
 		
 		createOption( '#feedMediaType', 'Loading...' );
 
-		// load local copy of the data which (for Australia) would normally would be from:
-		// http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/RSS/wsAvailableFeeds?cc=AU
-		$.getScript( '/javascripts/wsAvailableFeeds/' + isWebAppItunesRss.countryCode + '.js', function(){
+		$.getScript( 'http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/RSS/wsAvailableFeeds?cc=' + isWebAppItunesRss.countryCode, function(){
 			if(typeof availableFeeds !== 'undefined')
 			{
 				json = availableFeeds;
@@ -164,10 +162,12 @@ var document = window.document,
 		$('#urlField').val(finalURL);
 		$('#urlOutput').show();
 		
-		genIframe();
+		// genIframe();
+		
+		getSimplifiedFeed();
 	}
 
-	//Generate RSS iFrame
+	// Generate RSS iFrame
 	function genIframe() {
 		if( typeof finalURL !== 'undefined' ) {
 			$('#urlFieldIframe').attr('src', finalURL);
@@ -185,6 +185,136 @@ var document = window.document,
 		} else {
 			$('#field_explicit').hide();
 		}
+	}
+	
+	
+	////////////////////////////////////
+	// Modified from
+	// WWDC 2010 Sample Code
+	// WWDC10-SampleCode/Safari/SearchAPIDemo.zip
+	// http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?code=y&source=x&bundleID=20645
+	////////////////////////////////////
+	
+	// return a simple array of objects containing artworkUrl, id, title, artistName, and artistId
+	// function getSimplifiedFeed( feedUrl, partnerId, urlPrefix, entryTransformFunction, callback ){
+	function getSimplifiedFeed( ){
+		var feedUrl = finalURL.slice(0, -3) + 'callback=_jqjsp/json'; // remove 'xml' and replace with jsonp callback
+		
+		window.console.log(feedUrl);
+		
+		$.jsonp({
+			url: feedUrl,
+			callback: "_jqjsp",
+			success: function(json, textStatus){
+				// This will be called in case of success no matter the callback name
+				// this; // the xOptions object or xOptions.context if provided
+				window.console.log('JSONP > Success');
+				// window.console.log('JSONP > Success > json');
+				// window.console.log(json);
+				// window.console.log('JSONP > Success > textStatus');
+				// window.console.log(textStatus);
+				
+				try{
+					window.console.debug('Raw JSON:', json);
+					var result = [];
+
+					if( !json.feed.entry ){
+						window.console.warn('No "entry" array for feed:', feedUrl);
+					} else {
+						$.each(json.feed.entry, function(i, rssEntry){
+							try{
+								window.console.group("Entry " + i + ": " + rssEntry['im:name'].label, rssEntry);
+								window.console.debug(rssEntry);
+								
+								var simpleEntry = {
+									// "url" : affiliate.affiliatedUrlForUrl($.getObject( "id.label", rssEntry ), partnerId, urlPrefix),
+									"url" : $.getObject( "id.label", rssEntry ),
+									"id" : $.getObject( "id.label", rssEntry ).replace(/.*\/id(\d+)(\?.*|$)/, '$1'),
+									"artworkUrl" : $.getObject( "im:image.2.label", rssEntry ),
+									"artworkHeight" : $.getObject( "im:image.2.attributes.height", rssEntry ),
+									"title" : $.getObject( "title.label", rssEntry )
+									// ,"contentTitle" : $.getObject( "im:name.label", rssEntry ),
+									// "artistName" : $.getObject( "im:artist.label", rssEntry ),
+									// "artistId" : $.getObject( "im:artist.attributes.href", rssEntry ).replace(/.*\/id(\d+)(\?.*|$)/, '$1')
+								};
+
+								result.push(htmlElementForSimpleFeedEntry(simpleEntry));
+								
+								window.console.groupEnd();
+							} catch(e) {
+								window.console.warn("Caught exception", e, rssEntry);
+							}
+						});
+					}
+				} catch(e) {
+					window.console.warn("Caught exception", e);
+				}
+				
+				genPageContentForFeed(result);
+				// callback(result);
+			},
+			error: function(xOptions, textStatus){
+				// This will be called in case of error no matter the callback name
+				// this; // the xOptions object or xOptions.context if provided
+				window.console.log('JSONP > Error');
+				window.console.log('JSONP > Error > xOptions');
+				window.console.log(xOptions);
+				window.console.log('JSONP > Error > textStatus');
+				window.console.log(textStatus);
+			},
+			complete: function(xOptions, textStatus){
+				// This will be called when the request finishes (after success and error callbacks are executed).
+				// this; // the xOptions object or xOptions.context if provided
+				window.console.log('JSONP > Complete');
+				// window.console.log('JSONP > Complete > xOptions');
+				// window.console.log(xOptions);
+				// window.console.log('JSONP > Complete > textStatus');
+				// window.console.log(textStatus);
+			}
+		});
+	}
+	
+	// return an HTML element for a given entry, including data from a quick SearchAPI lookup
+	function htmlElementForSimpleFeedEntry(simpleEntry) {
+		console.log(simpleEntry.artworkHeight);
+		var result = $("<div/>");
+		result.addClass('rssResult');
+		result.height(parseInt(simpleEntry.artworkHeight, 10));
+		
+		var contentImage = $("<img/>");
+		contentImage.attr("src", simpleEntry.artworkUrl);
+		
+		var contentLink = $("<a/>");
+		contentLink.addClass("rssLinkedImage");
+		contentLink.attr("href", simpleEntry.url);
+		contentLink.attr("title", simpleEntry.title);
+		contentLink.data('id', simpleEntry.id);
+		
+		contentLink.append(contentImage);
+		result.append(contentLink);
+
+		// if (true) {
+		// 	var overlay = $("<ol/>").addClass('songOverlay');
+		// 	var url = 'http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/wsLookup?entity=song&limit=5&sort=popularity&id=' + simpleEntry.id;
+		// 	$.getJSON(url, null, function(data) {
+		// 		$.each(data.results, function(index, song) {
+		// 			if (index == 0) { return true; } // skip the first entry, which will be for the album
+		// 			overlay.append($("<li/>").text(song.trackCensoredName));
+		// 		});
+		// 		result.append(overlay);
+		// 	});
+		// }
+		return result;  
+	}
+	
+	function genPageContentForFeed(feedHtmlElements) {
+		console.debug("Pulled back simple data: ", feedHtmlElements); 
+		if(feedHtmlElements){
+			$("#rssContent").show().empty();
+			$.each(feedHtmlElements, function(i, entry) { 
+				$("#rssContent").append(entry);
+			});
+		};
 	}
 
 	// Expose isWebAppItunesRss to the global object
