@@ -6,7 +6,7 @@ form#rssGenerator {}
 	#rssGenerator ul li label { display: none; }
 	
 	#field_country {}
-		select#feedCountry { width: 105px; }
+		select#feedCountry { width: 102px; }
 	#field_mediatype {}
 		select#feedMediaType { width: 110px; }
 	#field_feedtype {}
@@ -14,7 +14,7 @@ form#rssGenerator {}
 	#field_genre {}
 		select#feedGenre { width: 180px; }
 	#field_size {}
-		select#feedSize { width: 45px; }
+		select#feedSize { width: 47px; }
 	#field_explicit {}
 		select#feedExplicit { width: 90px; }
 	#generate_rss {}
