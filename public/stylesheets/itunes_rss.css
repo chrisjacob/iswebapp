@@ -14,9 +14,9 @@ form#rssGenerator {}
 	#field_genre {}
 		select#feedGenre { width: 180px; }
 	#field_size {}
-		select#feedSize { width: 50px; }
+		select#feedSize { width: 55px; }
 	#field_explicit {}
-		select#feedExplicit { width: 85px; }
+		select#feedExplicit { width: 90px; }
 	#generate_rss {}
 		button#generate_btn { margin-left: 2px; }
 		
