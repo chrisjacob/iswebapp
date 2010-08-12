@@ -66,13 +66,13 @@ var document = window.document,
 	
 	// PRIVATE FUNCTIONS
 	function debug(obj, options){
-		if (window.console && window.console.log) {
-			window.console.log(obj);
-			window.console.log(options);
-			window.console.log(urlParams);
-			window.console.log(urlParamsObj);
-			window.console.log(urlPath);
-			window.console.log(obj.countryCode);
+		if (console && console.log) {
+			console.log(obj);
+			console.log(options);
+			console.log(urlParams);
+			console.log(urlParamsObj);
+			console.log(urlPath);
+			console.log(obj.countryCode);
 		}
 	}
 	
@@ -91,7 +91,7 @@ var document = window.document,
 			if(typeof availableFeeds !== 'undefined')
 			{
 				json = availableFeeds;
-				// window.console.log(json);
+				// console.log(json);
 				
 				// load in mediaType options and focus on this field
 				var mediaType = availableFeeds.list;
@@ -200,7 +200,7 @@ var document = window.document,
 	function getSimplifiedFeed( ){
 		var feedUrl = finalURL.slice(0, -3) + 'callback=_jqjsp/json'; // remove 'xml' and replace with jsonp callback
 		
-		window.console.log(feedUrl);
+		console.log(feedUrl);
 		
 		$.jsonp({
 			url: feedUrl,
@@ -208,23 +208,23 @@ var document = window.document,
 			success: function(json, textStatus){
 				// This will be called in case of success no matter the callback name
 				// this; // the xOptions object or xOptions.context if provided
-				window.console.log('JSONP > Success');
-				// window.console.log('JSONP > Success > json');
-				// window.console.log(json);
-				// window.console.log('JSONP > Success > textStatus');
-				// window.console.log(textStatus);
+				console.log('JSONP > Success');
+				// console.log('JSONP > Success > json');
+				// console.log(json);
+				// console.log('JSONP > Success > textStatus');
+				// console.log(textStatus);
 				
 				try{
-					window.console.debug('Raw JSON:', json);
+					console.debug('Raw JSON:', json);
 					var result = [];
 
 					if( !json.feed.entry ){
-						window.console.warn('No "entry" array for feed:', feedUrl);
+						console.warn('No "entry" array for feed:', feedUrl);
 					} else {
 						$.each(json.feed.entry, function(i, rssEntry){
 							try{
-								window.console.group("Entry " + i + ": " + rssEntry['im:name'].label, rssEntry);
-								window.console.debug(rssEntry);
+								console.group("Entry " + i + ": " + rssEntry['im:name'].label, rssEntry);
+								console.debug(rssEntry);
 								
 								var simpleEntry = {
 									// "url" : affiliate.affiliatedUrlForUrl($.getObject( "id.label", rssEntry ), partnerId, urlPrefix),
@@ -240,14 +240,14 @@ var document = window.document,
 
 								result.push(htmlElementForSimpleFeedEntry(simpleEntry));
 								
-								window.console.groupEnd();
+								console.groupEnd();
 							} catch(e) {
-								window.console.warn("Caught exception", e, rssEntry);
+								console.warn("Caught exception", e, rssEntry);
 							}
 						});
 					}
 				} catch(e) {
-					window.console.warn("Caught exception", e);
+					console.warn("Caught exception", e);
 				}
 				
 				genPageContentForFeed(result);
@@ -256,20 +256,20 @@ var document = window.document,
 			error: function(xOptions, textStatus){
 				// This will be called in case of error no matter the callback name
 				// this; // the xOptions object or xOptions.context if provided
-				window.console.log('JSONP > Error');
-				window.console.log('JSONP > Error > xOptions');
-				window.console.log(xOptions);
-				window.console.log('JSONP > Error > textStatus');
-				window.console.log(textStatus);
+				console.log('JSONP > Error');
+				console.log('JSONP > Error > xOptions');
+				console.log(xOptions);
+				console.log('JSONP > Error > textStatus');
+				console.log(textStatus);
 			},
 			complete: function(xOptions, textStatus){
 				// This will be called when the request finishes (after success and error callbacks are executed).
 				// this; // the xOptions object or xOptions.context if provided
-				window.console.log('JSONP > Complete');
-				// window.console.log('JSONP > Complete > xOptions');
-				// window.console.log(xOptions);
-				// window.console.log('JSONP > Complete > textStatus');
-				// window.console.log(textStatus);
+				console.log('JSONP > Complete');
+				// console.log('JSONP > Complete > xOptions');
+				// console.log(xOptions);
+				// console.log('JSONP > Complete > textStatus');
+				// console.log(textStatus);
 			}
 		});
 	}
