@@ -6,15 +6,15 @@ form#rssGenerator {}
 	#rssGenerator ul li label { display: none; }
 	
 	#field_country {}
-		select#feedCountry { width: 105px; }
+		select#feedCountry { width: 115px; }
 	#field_mediatype {}
-		select#feedMediaType { width: 110px; }
+		select#feedMediaType { width: 115px; }
 	#field_feedtype {}
-		select#feedType { width: 180px; }
+		select#feedType { width: 170px; }
 	#field_genre {}
-		select#feedGenre { width: 180px; }
+		select#feedGenre { width: 170px; }
 	#field_size {}
-		select#feedSize { width: 55px; }
+		select#feedSize { width: 65px; }
 	#field_explicit {}
 		select#feedExplicit { width: 90px; }
 	#generate_rss {}
