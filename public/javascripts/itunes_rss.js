@@ -40,7 +40,8 @@ var document = window.document,
 			}
 		});
 		
-		$('#generate_btn').bind( 'click', function(){
+		$('#generate_btn').bind( 'click', function(e){
+			e.preventDefault();
 			genURL($('#feedMediaType').attr('selectedIndex'), $('#feedType').attr('selectedIndex'));
 		});
 		
@@ -277,21 +278,33 @@ var document = window.document,
 	// return an HTML element for a given entry, including data from a quick SearchAPI lookup
 	function htmlElementForSimpleFeedEntry(simpleEntry) {
 		console.log(simpleEntry.artworkHeight);
-		var result = $("<div/>");
-		result.addClass('rssResult');
+		// var result = $("<div/>");
+		// result.addClass('rssResult');
+		// result.height(parseInt(simpleEntry.artworkHeight, 10));
+		// 
+		// var contentImage = $("<img/>");
+		// contentImage.attr("src", simpleEntry.artworkUrl);
+		// 
+		// var contentLink = $("<a/>");
+		// contentLink.addClass("rssLinkedImage");
+		// contentLink.attr("href", simpleEntry.url);
+		// contentLink.attr("title", simpleEntry.title);
+		// contentLink.data('id', simpleEntry.id);
+		
+		// contentLink.append(contentImage);
+		// result.append(contentLink);
+		
+		var result = $("<a/>");
+		result.addClass("rssResult");
+		result.attr("href", simpleEntry.url);
+		result.attr("title", simpleEntry.title);
+		result.data('id', simpleEntry.id);
 		result.height(parseInt(simpleEntry.artworkHeight, 10));
 		
 		var contentImage = $("<img/>");
 		contentImage.attr("src", simpleEntry.artworkUrl);
 		
-		var contentLink = $("<a/>");
-		contentLink.addClass("rssLinkedImage");
-		contentLink.attr("href", simpleEntry.url);
-		contentLink.attr("title", simpleEntry.title);
-		contentLink.data('id', simpleEntry.id);
-		
-		contentLink.append(contentImage);
-		result.append(contentLink);
+		result.append(contentImage);
 
 		// if (true) {
 		// 	var overlay = $("<ol/>").addClass('songOverlay');
