@@ -1,4 +1,29 @@
-.rssResult{display:block;float:left;margin:0px;padding:0px;line-height:0px;font-size:0px;}
+
+#logoItunesRss { background: url('/images/rss_32.png'); width: 32px; height:32px; margin-left:8px; float:left; }
+
+form#rssGenerator { width: 858px; float:left; }
+
+	#rssGenerator ul { list-style-type: none; height: 32px; line-height: 32px; }
+	#rssGenerator ul li { display: block; float: left; margin-left: 8px; }
+	#rssGenerator ul li label { display: none; }
+
+	#field_country {}
+		select#feedCountry { width: 90px; }
+	#field_mediatype {}
+		select#feedMediaType { width: 110px; }
+	#field_feedtype {}
+		select#feedType { width: 180px; }
+	#field_genre {}
+		select#feedGenre { width: 180px; }
+	#field_size {}
+		select#feedSize { width: 40px; }
+	#field_explicit {}
+		select#feedExplicit { width: 90px; }
+	#generate_rss {}
+		input#generate_btn {}
+	
+.rssResult { display: block; float: left; margin: 0px; padding: 0px; line-height: 0px; font-size: 0px; }
+
 
 /*
 #rss { height: 30px; line-height: 30px; }

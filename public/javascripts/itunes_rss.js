@@ -146,7 +146,7 @@ var document = window.document,
 	function genURL(media, index) {
 		var prefix = $.getObject( 'list.'+ media +'.types.list.'+ index +'.urlPrefix' , json ),
 				suffix = $.getObject( 'list.'+ media +'.types.list.'+ index +'.urlSuffix' , json ),
-				isExplicit = ( $('#feedEC > option:selected').val() === 'true' ) && $('#feedEC').is(':visible');
+				isExplicit = ( $('#feedExplicit > option:selected').val() === 'true' ) && $('#feedExplicit').is(':visible');
 		
 		channelParams = "limit=" + $('#feedSize').val() + "/";
 		
