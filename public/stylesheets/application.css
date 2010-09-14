@@ -89,7 +89,8 @@ h5 { font-size: 15px; margin: 22px 0px; }
 h6 { font-size: 13px; margin: 24px 0px; }
 
 /* www.aestheticallyloyal.com/public/optimize-legibility/ */ 
-h1,h2,h3,h4,h5,h6 { font-weight: bold; text-rendering: optimizeLegibility; }
+/* "might be a bit too buggy for now" - http://twitter.com/nr99/status/21383854940 */
+/* h1,h2,h3,h4,h5,h6 { font-weight: bold; text-rendering: optimizeLegibility; } */
 
 /* maxvoltar.com/archive/-webkit-font-smoothing */
 html { -webkit-font-smoothing: antialiased; }
