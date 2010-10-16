@@ -17,11 +17,12 @@ before do
 end
 
 get '/' do
-  @page_title = 'isWebApp.com'
-  @page_name = 'index'
-	@page_css = css_partial_symbol(@page_name)
-	@page_js = js_partial_symbol(@page_name)
-  erb :index
+  # @page_title = 'isWebApp.com'
+  # @page_name = 'index'
+  # @page_css = css_partial_symbol(@page_name)
+  # @page_js = js_partial_symbol(@page_name)
+  # erb :index
+  redirect '/itunes/rss'
 end
 
 get '/itunes/rss' do
